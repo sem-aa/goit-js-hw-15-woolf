@@ -10,8 +10,7 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-function createBoxes() {
-  const amount = input.value;
+function createBoxes(amount) {
   const boxesArray = [];
   for (let i = 0; i < amount; i += 1) {
     const box = document.createElement("div");
@@ -28,5 +27,14 @@ function destroyBoxes() {
   containerBoxes.innerHTML = "";
 }
 
-createButton.addEventListener("click", createBoxes);
-destroyButton.addEventListener("click", destroyBoxes);
+function handleCreate() {
+  const amount = input.value;
+  createBoxes(amount);
+}
+
+function handleDestroy() {
+  destroyBoxes();
+}
+
+createButton.addEventListener("click", handleCreate);
+destroyButton.addEventListener("click", handleDestroy);
